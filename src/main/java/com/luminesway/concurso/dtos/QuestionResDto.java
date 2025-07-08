@@ -1,18 +1,16 @@
 package com.luminesway.concurso.dtos;
 
-import com.luminesway.concurso.enums.Difficulty;
-import com.luminesway.concurso.enums.QuestionType;
+import com.luminesway.concurso.entities.Question;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.List;
 
 
 @Builder
 @Getter
 public class QuestionResDto {
-    private Long id;
-    private String title;
-    private String directory;
-    private Difficulty difficulty;
-    private QuestionType type;
-    private String description;
+    private String question;
+    private Question answer;
+    private List<Question> otherOptions;
 }

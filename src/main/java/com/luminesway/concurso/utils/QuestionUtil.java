@@ -1,22 +1,19 @@
 package com.luminesway.concurso.utils;
 
-import com.luminesway.concurso.dtos.QuestionResDto;
-import com.luminesway.concurso.enums.Difficulty;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
+import com.luminesway.concurso.entities.Question;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
+
 
 public class QuestionUtil {
-
-    public static List<QuestionResDto> generateQuestions(QuestionResDto answer, List<QuestionResDto> options) {
-        List<QuestionResDto> usedQuestions = new ArrayList<>(List.of(answer));
+    public static List<Question> generateQuestions(Question answer, List<Question> options) {
+        List<Question> usedQuestions = new ArrayList<>(List.of(answer));
 
         while (usedQuestions.size() < 4) {
-            List<QuestionResDto> filteredOptions = options.stream()
+            List<Question> filteredOptions = options.stream()
                     .filter(option -> !usedQuestions.contains(option))
                     .toList();
 
@@ -27,5 +24,4 @@ public class QuestionUtil {
         Collections.shuffle(usedQuestions);
         return usedQuestions;
     }
-
 }
